@@ -3,15 +3,11 @@ import { nanoid } from 'nanoid';
 import styled from 'styled-components';
 import Form from './Form/Form';
 import Contacts from 'components/ContactList/ContactList';
+import Find from './Filter/Filter';
 
 class App extends Component {
   state = {
-    contacts: [
-      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-    ],
+    contacts: [],
     filter: '',
   };
 
@@ -27,12 +23,23 @@ class App extends Component {
     }));
   };
 
+  handleFindInput = value => {
+    this.setState({ filter: value });
+  };
+
   render() {
+    const normalizedContacts = this.state.filter.toLocaleLowerCase();
+    const filteredContacts = this.state.contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedContacts)
+    );
+
     return (
       <Wrapper>
         <p>PhoneBook</p>
         <Form onSubmit={this.addContact}> </Form>
-        <Contacts contacts={this.state.contacts}></Contacts>
+        <Find onFindInput={this.handleFindInput}></Find>
+        <p>Find contacts by name</p>
+        <Contacts contacts={filteredContacts}></Contacts>
       </Wrapper>
     );
   }
