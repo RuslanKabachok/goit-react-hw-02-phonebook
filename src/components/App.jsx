@@ -1,18 +1,32 @@
 import React, { Component } from 'react';
+import { nanoid } from 'nanoid';
 import styled from 'styled-components';
 import Form from './Form/Form';
+import Contacts from 'components/ContactList/ContactList';
 
 class App extends Component {
   state = {
-    contacts: [''],
+    contacts: [],
     name: '',
+  };
+
+  addContact = value => {
+    const contact = {
+      id: nanoid(),
+      name: value,
+    };
+    console.log(contact);
+    this.setState(prevState => ({
+      contacts: [contact, ...prevState.contacts],
+    }));
   };
 
   render() {
     return (
       <Wrapper>
         <p>PhoneBook</p>
-        <Form></Form>
+        <Form onSubmit={this.addContact}> </Form>
+        <Contacts contacts={this.state.contacts}></Contacts>
       </Wrapper>
     );
   }

@@ -7,7 +7,12 @@ class Form extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log(event.currentTarget.name);
+    this.props.onSubmit(this.state.name);
+    this.setState({ name: '' });
+  };
+
+  handleChange = event => {
+    this.setState({ name: event.currentTarget.value });
   };
 
   render() {
@@ -21,6 +26,7 @@ class Form extends Component {
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
+            onChange={this.handleChange}
           ></Input>
         </Label>
         <Button type="submit">Add contact</Button>
