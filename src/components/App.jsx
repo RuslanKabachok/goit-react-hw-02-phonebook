@@ -17,7 +17,6 @@ class App extends Component {
       name,
       number,
     };
-    console.log(contact);
     this.setState(prevState => ({
       contacts: [contact, ...prevState.contacts],
     }));
@@ -25,6 +24,12 @@ class App extends Component {
 
   handleFindInput = value => {
     this.setState({ filter: value });
+  };
+
+  handleDeleteUser = id => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== id),
+    }));
   };
 
   render() {
@@ -39,7 +44,10 @@ class App extends Component {
         <Form onSubmit={this.addContact}> </Form>
         <Find onFindInput={this.handleFindInput}></Find>
         <p>Find contacts by name</p>
-        <Contacts contacts={filteredContacts}></Contacts>
+        <Contacts
+          contacts={filteredContacts}
+          onDelete={this.handleDeleteUser}
+        ></Contacts>
       </Wrapper>
     );
   }
