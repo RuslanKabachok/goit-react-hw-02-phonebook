@@ -48,14 +48,14 @@ class App extends Component {
     return (
       <Wrapper>
         <Paragraph>PhoneBook</Paragraph>
-        <Form onSubmit={this.addContact}> </Form>
+        <Form onSubmit={this.addContact} />
         <Paragraph>Find contacts by name</Paragraph>
-        <Find onFindInput={this.handleFindInput}></Find>
+        <Find onFindInput={this.handleFindInput} />
 
         <Contacts
           contacts={filteredContacts}
           onDelete={this.handleDeleteUser}
-        ></Contacts>
+        />
       </Wrapper>
     );
   }
