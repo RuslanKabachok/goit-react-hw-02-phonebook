@@ -11,15 +11,22 @@ class App extends Component {
     filter: '',
   };
 
-  addContact = ({ name, number }) => {
-    const contact = {
+  addContact = contact => {
+    const newContact = {
       id: nanoid(),
-      name,
-      number,
+      name: contact.name,
+      number: contact.number,
     };
-    this.setState(prevState => ({
-      contacts: [contact, ...prevState.contacts],
-    }));
+
+    const initialContacts = this.state.contacts;
+
+    if (initialContacts.find(item => item.name === newContact.name)) {
+      alert(`${newContact.name} is already in contacts`);
+    } else {
+      this.setState(prevState => ({
+        contacts: [newContact, ...prevState.contacts],
+      }));
+    }
   };
 
   handleFindInput = value => {
