@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
-import styled from 'styled-components';
+import { Wrapper, Paragraph } from './App.styled';
 import Form from './Form/Form';
 import Contacts from 'components/ContactList/ContactList';
 import Find from './Filter/Filter';
@@ -47,10 +47,11 @@ class App extends Component {
 
     return (
       <Wrapper>
-        <p>PhoneBook</p>
+        <Paragraph>PhoneBook</Paragraph>
         <Form onSubmit={this.addContact}> </Form>
+        <Paragraph>Find contacts by name</Paragraph>
         <Find onFindInput={this.handleFindInput}></Find>
-        <p>Find contacts by name</p>
+
         <Contacts
           contacts={filteredContacts}
           onDelete={this.handleDeleteUser}
@@ -59,14 +60,5 @@ class App extends Component {
     );
   }
 }
-
-const Wrapper = styled.div`
-  padding: 8px;
-  width: 400px;
-  margin: 0 auto;
-  background-color: #c2e0fa;
-  border-radius: 4px;
-  box-shadow: 2px 3px 13px 0px rgba(0, 0, 0, 0.73); ;
-`;
 
 export default App;

@@ -13,8 +13,8 @@ class Form extends Component {
     this.props.onSubmit(this.state);
 
     this.setState({
-      name: '',
-      number: '',
+      name: ' ',
+      number: ' ',
     });
   };
 
@@ -24,7 +24,10 @@ class Form extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form
+        onSubmit={this.handleSubmit}
+        style={{ display: 'flex', flexDirection: 'column' }}
+      >
         <Label>
           Name
           <Input

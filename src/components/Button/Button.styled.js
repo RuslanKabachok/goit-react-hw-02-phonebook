@@ -1,15 +1,29 @@
 import styled from 'styled-components';
 
 export const Button = styled.button`
-  background-color: #7ea6c9;
-  border-radius: 4px;
-  padding: 4px;
-  width: 100px;
-  text-align: center;
+  text-decoration: none;
+  width: 180px;
+  height: 50px;
+  display: inline-block;
+  color: white;
+  padding: 20px 30px;
+  margin: 10px 115px;
+  border-radius: 10px;
   border: none;
-  outline: none;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background-image: linear-gradient(
+    to right,
+    #9eefe1 0%,
+    #4830f0 51%,
+    #9eefe1 100%
+  );
+  background-size: 200% auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  transition: 0.5s;
   cursor: pointer;
   &:hover {
-    background-color: #9757d3;
+    background-position: right center;
   }
 `;
