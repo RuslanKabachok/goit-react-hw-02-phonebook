@@ -13,8 +13,8 @@ class Form extends Component {
     this.props.onSubmit(this.state);
 
     this.setState({
-      name: ' ',
-      number: ' ',
+      name: '',
+      number: '',
     });
   };
 
@@ -37,6 +37,7 @@ class Form extends Component {
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
             onChange={this.handleChange}
+            value={this.state.name}
           ></Input>
         </Label>
         <Label>
@@ -48,6 +49,7 @@ class Form extends Component {
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
             onChange={this.handleChange}
+            value={this.state.number}
           ></Input>
         </Label>
         <Button type="submit">Add contact</Button>
