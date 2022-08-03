@@ -1,9 +1,9 @@
+import PropTypes from 'prop-types';
 import { ContactList } from './ContactList.styled';
 import {
   ContactListItem,
   Button,
 } from 'components/ContactItem/ContactItem.styled';
-// import { Button } from 'components/Button/Button.styled';
 
 const Contacts = ({ contacts, onDelete }) => {
   return (
@@ -16,6 +16,11 @@ const Contacts = ({ contacts, onDelete }) => {
       ))}
     </ContactList>
   );
+};
+
+Contacts.propTypes = {
+  contacts: PropTypes.array,
+  onDelete: PropTypes.func,
 };
 
 export default Contacts;
